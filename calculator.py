@@ -43,7 +43,10 @@ class Operations():
         return div
 
 class Converter():
-    def convert_to_float(user_number):
+    def __init__(self, user_number):
+        self.user_number = user_number
+
+    def convert_to_float(self):
         """Funcao para converter o input do usuario para float aceitando pi ou euler.
 
         Args:
@@ -52,34 +55,34 @@ class Converter():
         pi_or_euler = {
             "pi": PI,
             "euler": EULER,
-            "a":"",
             }
 
-        if user_number in pi_or_euler:
-            return pi_or_euler[user_number]
+        if self.user_number in pi_or_euler:
+            return pi_or_euler[self.user_number]
         else:
-            return float(user_number)
+            return float(self.user_number)
 
-    def convert_to_pi_or_euler():
-        if real == PI:
-            pass
-        elif real == EULER:
-            pass
+    # def convert_to_pi_or_euler(self):
+    #     if 
+    #         pass
+    #     elif real == EULER:
+    #         pass
 
 
-re1 =float(input("Digite o numero real do primeiro complexo: "))
-im1 = float(input("Digite o numero imaginario do primeiro complexo: "))
+re1 = input("Digite o numero real do primeiro complexo: ")
+im1 = input("Digite o numero imaginario do primeiro complexo: ")
 
-# converter = Converter()
-# real = converter.convert_to_float(re1)
-# imag = converter.convert_to_float(im1)
+converter_real = Converter(re1)
+real = converter_real.convert_to_float()
 
-z1 = complex(re1, im1)
+converter_imag = Converter(im1)
+imag = converter_imag.convert_to_float()
+
+z1 = complex(real, imag)
 operation = Operations(z1)
 
-print("[1] conjugado\n[2] z1 + z2\n[3] z1 - z2\n[4] z1 * z2\n[5] z1 / z2")
-escolha = input("digite o que vc quer fazer: ")
-
+print("[1] Conjugado\n[2] Adicao\n[3] Subtracao\n[4] Multiplicacao\n[5] Divisao")
+escolha = input("Digite qual operacao deseja utilizar: ")
 
 if escolha == "1":
     conjugado = operation.conjugated()
