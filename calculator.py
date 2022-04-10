@@ -13,10 +13,6 @@ Numeros complexos se comportam como numeros reais para adicao e multiplicacao.
 #Constants
 PI = cmath.pi
 EULER = cmath.e
-POSITIVE_INFINITE = cmath.inf
-POSITIVE_COMPLEX_INFINITE = cmath.infj
-NAN = cmath.nan
-NAN_COMPLEX = cmath.nanj
 
 class Operations():
     def __init__(self, z1):
@@ -89,8 +85,8 @@ if escolha == "1":
     print("o conjugado é", conjugado)
 
 elif escolha != "1":
-    re2 = int(input("Digite o numero real do segundo complexo: "))
-    im2 = int(input("Digite o numero imaginario do segundo complexo: "))
+    re2 = float(input("Digite o numero real do segundo complexo: "))
+    im2 = float(input("Digite o numero imaginario do segundo complexo: "))
 
     z2 = complex(re2, im2)
 
