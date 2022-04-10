@@ -4,10 +4,13 @@ import time
 import sys
 
 """
+Calculadora de numeros complexos para operacoes básicas de aritmética.
+Com ela o usuário pode facilmente calcular adição, subtração, multiplicação e divisão.
 
-
-
+As constantes π (Pi) e ε (Euler) sao aceitas caso escritas como "pi" ou "euler", quando
+requisitada inserção de dados pelo usuário.
 """
+
 #Constants
 PI = cmath.pi
 EULER = cmath.e
@@ -119,7 +122,7 @@ def second_choices(choice, result=None):
 
 def new_options(result):
         print("")
-        print("[1] Sair da Calculadora.\n[2] Reiniciar Calculadora.\n[3] Realizar operação com o result anterior.")
+        print("[1] Sair da Calculadora.\n[2] Reiniciar Calculadora.\n[3] Realizar operação com o resultado anterior.")
         print("")
         choice_final = input("Digite qual operação deseja utilizar: ")
         if choice_final == "1":
@@ -157,4 +160,4 @@ while my_bool:
         new_options(result)
 
     else:
-        second_choices(choice, result=0)
+        second_choices(choice, result=z1)
