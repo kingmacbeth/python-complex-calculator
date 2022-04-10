@@ -54,7 +54,19 @@ def convert_to_float(user_number):
 def exit_calc():
     return sys.exit("Ate logo!")
 
-def chamada_z2():
+
+def complex_z1():
+    re1 = input("Digite o numero real do primeiro complexo: ")
+    im1 = input("Digite o numero imaginario do primeiro complexo: ")
+
+    real = convert_to_float(re1)
+    imag = convert_to_float(im1)
+
+    z1 = complex(real, imag)
+
+    return z1
+
+def complex_z2():
     re2 = input("Digite o numero real do segundo complexo: ")
     im2 = input("Digite o numero imaginario do segundo complexo: ")
 
@@ -65,74 +77,90 @@ def chamada_z2():
 
     return z2
 
+def first_choices():
+    print("")
+    print("[1] Conjugado\n[2] Adicao\n[3] Subtracao\n[4] Multiplicacao\n[5] Divisao")
+    print("")
+    escolha = input("Digite qual operacao deseja utilizar: ")
+
+    return escolha
+
+def second_choices(escolha, resultado=None):
+        if escolha != "1":
+            if resultado is None:
+                z2 = complex_z2()
+
+            else:
+                z2 = complex_z2()
+
+                if escolha == "2":
+                    resultado = operation.addition(z2)
+                    print("A soma dos complexos é: ", resultado)
+                    time.sleep(2)
+
+                    novas_opcoes(resultado)
+
+                elif escolha == "3":
+                    resultado = operation.subtraction(z2)
+                    print("A subtraçao dos complexos é: ", resultado)
+                    time.sleep(2)
+
+                    novas_opcoes(resultado)
+
+                elif escolha == "4":
+                    resultado = operation.multiplication(z2)
+                    print("A multiplicação dos complexos é: ", resultado)
+                    time.sleep(2)
+
+                    novas_opcoes(resultado)
+
+                elif escolha == "5":
+                    resultado = operation.division(z2)
+                    print("A divisão dos complexos é: ", resultado)
+                    time.sleep(2)
+
+                    novas_opcoes(resultado)
+
 def novas_opcoes(resultado):
         print("")
         print("[1] Sair da Calculadora.\n[2] Reiniciar Calculadora.\n[3] Realizar operacao com o resultado anterior.")
         print("")
         escolha_final = input("Digite qual operacao deseja utilizar: ")
         if escolha_final == "1":
+            print("Saindo...")
+            time.sleep(2)
             exit_calc()
         elif escolha_final == "2":
             print("Reiniciando a calculadora...")
             time.sleep(2)
             print("")
         elif escolha_final == "3":
-            pass
+            escolha = first_choices()
+            if escolha == "1":
+                print("O conjugado é: ", resultado)
+                time.sleep(2)
+                novas_opcoes(resultado)
 
+            else:
+                operation.z1 = resultado
+                second_choices(escolha, resultado)
 
 my_bool = True
 
 while my_bool:
-    re1 = input("Digite o numero real do primeiro complexo: ")
-    im1 = input("Digite o numero imaginario do primeiro complexo: ")
-
-    real = convert_to_float(re1)
-    imag = convert_to_float(im1)
-
-    z1 = complex(real, imag)
+    z1 = complex_z1()
     operation = Operations(z1)
 
-    print("")
-    print("[1] Conjugado\n[2] Adicao\n[3] Subtracao\n[4] Multiplicacao\n[5] Divisao")
-    print("")
-    escolha = input("Digite qual operacao deseja utilizar: ")
+    escolha = first_choices()
 
     if escolha == "1":
         resultado = operation.conjugated()
         print("O conjugado é: ", resultado)
         time.sleep(2)
 
-        novas_opcoes()
+        novas_opcoes(resultado)
 
-    elif escolha != "1":
-        z2 = chamada_z2()
-
-        if escolha == "2":
-            resultado = operation.addition(z2)
-            print("A soma dos complexos é: ", resultado)
-            time.sleep(2)
-
-            novas_opcoes()
-
-        elif escolha == "3":
-            resultado = operation.subtraction(z2)
-            print("A subtraçao dos complexos é: ", resultado)
-            time.sleep(2)
-
-            novas_opcoes()
-
-        elif escolha == "4":
-            resultado = operation.multiplication(z2)
-            print("A multiplicação dos complexos é: ", resultado)
-            time.sleep(2)
-
-            novas_opcoes()
-
-        elif escolha == "5":
-            resultado = operation.division(z2)
-            print("A divisão dos complexos é: ", resultado)
-            time.sleep(2)
-
-            novas_opcoes()
+    else:
+        second_choices(escolha, resultado=0)
 
     #TODO Adicionar opcao de realizar outra operacao com o resultado final
