@@ -85,10 +85,16 @@ if escolha == "1":
     print("o conjugado é", conjugado)
 
 elif escolha != "1":
-    re2 = float(input("Digite o numero real do segundo complexo: "))
-    im2 = float(input("Digite o numero imaginario do segundo complexo: "))
+    re2 = input("Digite o numero real do segundo complexo: ")
+    im2 = input("Digite o numero imaginario do segundo complexo: ")
 
-    z2 = complex(re2, im2)
+    converter_real_2 = Converter(re2)
+    real_2 = converter_real.convert_to_float()
+
+    converter_imag_2 = Converter(im2)
+    imag_2 = converter_imag.convert_to_float()
+
+    z2 = complex(real_2, imag_2)
 
     if escolha == "2":
         soma = operation.addition(z2)
