@@ -111,3 +111,7 @@ elif escolha != "1":
     elif escolha == "5":
         div = operation.division(z2)
         print("A divisão dos complexos é: ", div)
+
+#TODO Adicionar funcao para deixar a calculadora rodando
+#TODO Adicionar opcao de reiniciar a calculadora
+#TODO Adicionar opcao de realizar outra operacao com o resultado final
